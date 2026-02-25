@@ -1,0 +1,250 @@
+.score-timeline-container {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.score-svg {
+    display: block;
+    min-height: 250px;
+}
+
+.score-svg text {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.staff-line {
+    stroke: var(--measure-line);
+    stroke-width: 2px;
+}
+
+.bar-line {
+    stroke: var(--text-primary);
+    stroke-width: 2px;
+}
+
+.measure-number {
+    fill: var(--text-secondary);
+    font-size: 14px;
+    font-family: monospace;
+}
+
+.section-marker {
+    fill: var(--accent-primary);
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.tempo-marker {
+    fill: var(--text-primary);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.time-signature {
+    fill: var(--text-primary);
+    font-size: 32px;
+    font-weight: 700;
+    text-anchor: middle;
+}
+
+.annotation-text {
+    fill: var(--accent-secondary);
+    font-size: 14px;
+    font-style: italic;
+}
+
+.playback-cursor {
+    stroke: var(--accent-danger);
+    stroke-width: 2px;
+    pointer-events: none;
+}
+
+.context-menu {
+    position: fixed;
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 8px;
+    z-index: 1000;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+    font-size: 0.9rem;
+    min-width: 220px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: calc(100vh - 20px);
+    overflow-y: auto;
+}
+
+.menu-category {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 4px;
+    padding: 0 4px;
+    letter-spacing: 0.5px;
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(45px, 1fr));
+    gap: 4px;
+}
+
+.menu-grid-text {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4px;
+}
+
+.symbol-btn {
+    background: var(--bg-surface-hover);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: var(--text-primary);
+    padding: 6px 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+}
+
+.symbol-btn.large {
+    font-size: 18px;
+    padding: 4px;
+}
+
+.symbol-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.symbol-btn.active {
+    background: var(--accent-primary);
+    color: white;
+    border-color: transparent;
+}
+
+.symbol-btn.active:hover {
+    background: var(--accent-primary-hover, rgba(59, 130, 246, 0.8));
+}
+
+.menu-item {
+    padding: 8px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--text-primary);
+    transition: background 0.1s;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.menu-item:hover {
+    background: var(--bg-surface-hover);
+}
+
+.menu-separator {
+    height: 1px;
+    background: var(--border-color);
+    margin: 2px 0;
+}
+
+.context-menu-inline-input {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.context-menu-input {
+    background: var(--bg-surface-hover);
+    color: var(--text-primary);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 13px;
+    font-weight: 500;
+    outline: none;
+    transition: all 0.1s ease;
+    cursor: pointer;
+}
+
+.context-menu-input:hover,
+.context-menu-input:focus {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.context-menu-input.bpm,
+.context-menu-input.num {
+    width: 48px;
+    text-align: center;
+    cursor: text;
+}
+
+/* optionタグ自体の見栄えをダークテーマに合わせる */
+.context-menu-input option {
+    background: var(--bg-surface, #1e293b);
+    color: var(--text-primary, #e2e8f0);
+}
+
+/* 矢印（スピンボタン）を非表示にする */
+.context-menu-input[type="number"]::-webkit-inner-spin-button,
+.context-menu-input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.context-menu-input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.text-danger {
+    color: var(--accent-danger) !important;
+}
+
+.measure-bg {
+    fill: transparent;
+    transition: fill 0.1s ease, stroke 0.1s ease;
+}
+
+.measure-bg:hover {
+    fill: rgba(255, 255, 255, 0.05);
+}
+
+.measure-bg.selected {
+    fill: rgba(59, 130, 246, 0.2);
+    stroke: var(--accent-primary);
+    stroke-width: 2px;
+}
+
+.bar-line {
+    transition: stroke 0.2s, stroke-width 0.2s;
+}
+
+.measure-group:hover .bar-line:not(.has-marker) {
+    stroke: var(--accent-primary);
+}
+
+.fermata-symbol {
+    fill: var(--accent-warning, #f59e0b);
+    /* Use an amber/orange color to make it stand out, fallback to hex */
+    font-size: 40px;
+    font-weight: normal;
+    font-style: normal;
+    text-anchor: middle;
+}
